@@ -120,7 +120,7 @@ def snakeLoop():
         if x_axis == x_food and y_axis == y_food:
             x_food = round(random.randrange(0,screen_width-snake_body)/10.0)*10.0
             y_food = round(random.randrange(0,screen_height-snake_body)/10.0)*10.0
-            snake_size+=1
+            snake_size+=5
 
         timer.tick(snake_speed)
 # message("Game Over!",red)
