@@ -25,6 +25,14 @@ snake_speed = 15
 font_style = pygame.font.SysFont("bahnschrift",30)
 score_font = pygame.font.SysFont("comicsansms",30)
 
+def valid_move(history_list,move,wasd):
+    """This function checks  cordinates of snake,and ignores invalid moves.
+    """
+    if (history_list[-1][0] == move or history_list[-1][1] == move ) or (history_list[-1][0] == wasd or history_list[-1][1] == wasd) :
+        return True
+    else:
+        return False
+
 
 def score(points):
     val = font_style.render("Your Score: " +str(points),True,blue)
@@ -53,6 +61,7 @@ def snakeLoop():
 
     snake_list = []
     snake_size = 1
+    history = [(0,0),]
 
     x_food = round(random.randrange(0,screen_width-snake_body)/10.0)*10.0
     y_food = round(random.randrange(0,screen_height-snake_body)/10.0)*10.0
@@ -79,19 +88,41 @@ def snakeLoop():
             if event.type==pygame.QUIT:
                 game_over=True
             if event.type == pygame.KEYDOWN:
-                if (event.key == pygame.K_LEFT) or (event.key == pygame.K_a):
+                if ((event.key == pygame.K_LEFT) or (event.key == pygame.K_a)) and valid_move(history,1073741903,97) != True:
+                    # print(event.key)
+                    # 1073741904
+                    # 97
+                    key_tracker = (1073741904,97)
                     x_axisChange = -snake_body
                     y_axisChange = 0
-                elif (event.key == pygame.K_RIGHT) or (event.key == pygame.K_d):
+                    history.append(key_tracker)
+                    
+                elif ((event.key == pygame.K_RIGHT) or (event.key == pygame.K_d)) and valid_move(history,1073741904,100) != True:
+                    # print(event.key)
+                    # 1073741903
+                    # 100
+                    key_tracker = (1073741903,100)
                     x_axisChange = snake_body
                     y_axisChange = 0
-                elif (event.key == pygame.K_UP) or (event.key == pygame.K_w):
+                    history.append(key_tracker)
+                
+                elif ((event.key == pygame.K_UP) or (event.key == pygame.K_w)) and valid_move(history,1073741905,119) != True:
+                    # print(event.key)
+                    # 1073741906
+                    # 119
+                    key_tracker = (1073741906,119)
                     x_axisChange = 0
                     y_axisChange = -snake_body
-                elif (event.key == pygame.K_DOWN) or (event.key == pygame.K_s):
+                    history.append(key_tracker)
+                elif ((event.key == pygame.K_DOWN) or (event.key == pygame.K_s)) and valid_move(history,1073741906,115) !=True:
+                    # print(event.key)
+                    # 1073741905
+                    # 115
+                    key_tracker = (1073741905,115)
                     x_axisChange = 0
                     y_axisChange = snake_body
-
+                    history.append(key_tracker)
+ 
         if x_axis >= screen_width or x_axis < 0 or y_axis >= screen_height or y_axis < 0:
             exit_game = True
 
@@ -120,7 +151,7 @@ def snakeLoop():
         if x_axis == x_food and y_axis == y_food:
             x_food = round(random.randrange(0,screen_width-snake_body)/10.0)*10.0
             y_food = round(random.randrange(0,screen_height-snake_body)/10.0)*10.0
-            snake_size+=5
+            snake_size+=1
 
         timer.tick(snake_speed)
 # message("Game Over!",red)
