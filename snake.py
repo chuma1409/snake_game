@@ -89,35 +89,27 @@ def snakeLoop():
                 game_over=True
             if event.type == pygame.KEYDOWN:
                 if ((event.key == pygame.K_LEFT) or (event.key == pygame.K_a)) and valid_move(history,1073741903,97) != True:
-                    # print(event.key)
-                    # 1073741904
-                    # 97
+
                     key_tracker = (1073741904,97)
                     x_axisChange = -snake_body
                     y_axisChange = 0
                     history.append(key_tracker)
                     
                 elif ((event.key == pygame.K_RIGHT) or (event.key == pygame.K_d)) and valid_move(history,1073741904,100) != True:
-                    # print(event.key)
-                    # 1073741903
-                    # 100
+
                     key_tracker = (1073741903,100)
                     x_axisChange = snake_body
                     y_axisChange = 0
                     history.append(key_tracker)
                 
                 elif ((event.key == pygame.K_UP) or (event.key == pygame.K_w)) and valid_move(history,1073741905,119) != True:
-                    # print(event.key)
-                    # 1073741906
-                    # 119
+
                     key_tracker = (1073741906,119)
                     x_axisChange = 0
                     y_axisChange = -snake_body
                     history.append(key_tracker)
                 elif ((event.key == pygame.K_DOWN) or (event.key == pygame.K_s)) and valid_move(history,1073741906,115) !=True:
-                    # print(event.key)
-                    # 1073741905
-                    # 115
+
                     key_tracker = (1073741905,115)
                     x_axisChange = 0
                     y_axisChange = snake_body
@@ -154,11 +146,8 @@ def snakeLoop():
             snake_size+=1
 
         timer.tick(snake_speed)
-# message("Game Over!",red)
-# pygame.display.update()
-# time.sleep(2)
 
     pygame.quit()
     quit()
-
-snakeLoop()
+if __name__ == "__main__":
+    snakeLoop()
