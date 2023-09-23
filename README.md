@@ -2,8 +2,8 @@
 
 A classic 2D snake game built with python and pygame
 use keys
-    [
-      W                     
-     ASD
-     ]
+    [  
+      W  
+     ASD  
+     ]  
 Or respective arrows to move around 
